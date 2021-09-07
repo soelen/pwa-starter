@@ -1,6 +1,6 @@
 import { css, html } from 'lit';
 import { property, customElement } from 'lit/decorators';
-import { RootState } from '../../store/store';
+import { RootState } from '../store/store';
 import { PageElement } from './page-element';
 
 @customElement('app-home')

@@ -7,8 +7,8 @@ import { connect } from 'pwa-helpers';
 import { Router } from '@vaadin/router';
 
 import '../components/header';
-import store, { RootState } from '../../store/store';
-import { closeDrawer, openDrawer } from '../../store/drawer';
+import store, { RootState } from '../store/store';
+import { closeDrawer, openDrawer } from '../store/drawer';
 
 @customElement('app-index')
 export class AppIndex extends  connect( store )( LitElement )   {

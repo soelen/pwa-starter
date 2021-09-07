@@ -1,6 +1,6 @@
 import { LitElement, css, CSSResultGroup } from 'lit';
 
-import store, { RootState } from '../../store/store';
+import store, { RootState } from '../store/store';
 
 export abstract class PageElement extends LitElement {
 
