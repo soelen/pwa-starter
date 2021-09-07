@@ -19,6 +19,15 @@
     <meta name="apple-mobile-web-app-title" content="PWA Starter" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+
+    <link rel="stylesheet" media="(prefers-color-scheme:light)" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.50/dist/themes/light.css">
+    <link rel="stylesheet" media="(prefers-color-scheme:dark)"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.50/dist/themes/dark.css"
+      onload="document.documentElement.classList.add('sl-theme-dark');">
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.50/dist/shoelace.js"></script>
+
+
+
     <!-- Imports an icon to represent the document. -->
     <link rel="icon" href="assets/icons/icon_24.png" type="image/x-icon" />
 
@@ -39,6 +48,14 @@
     <script type="module" src="/pwabuilder-sw.ts"></script>
 
     <script>
+      // HACK(keanulee): The Redux package assumes `process` exists - mock it here before
+      // the module is loaded.
+
+      window.process = {
+        env: {
+          NODE_ENV: 'development'
+        }
+      };
       navigator.serviceWorker.register("/pwabuilder-sw.js");
     </script>
   </body>

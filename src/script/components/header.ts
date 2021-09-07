@@ -51,6 +51,15 @@ export class AppHeader extends LitElement {
     return html`
       <header>
         <h1>${this.title}</h1>
+        <sl-dropdown>
+        <sl-button slot="trigger" caret>
+          <sl-icon name="translate"></sl-icon>
+        </sl-button>
+        <sl-menu>
+          <sl-menu-item checked>German</sl-menu-item>
+          <sl-menu-item disabled>English</sl-menu-item>
+        </sl-menu>
+      </sl-dropdown>
 
         <nav>
           <a href="./">Home</a>
