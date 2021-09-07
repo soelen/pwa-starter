@@ -15,28 +15,11 @@ html, body {
   color: white;
 }
 
-fast-design-system-provider {
-  color: black;
-}
-
 @media (prefers-color-scheme: light) {
   html,
   body {
     background: #edebe9;
     color: black;
-  }
-
-  fast-design-system-provider {
-    color: black;
-    --background-color: #edebe9;
-    --neutral-foreground-rest: #e5e5e5;
-    --neutral-fill-input-rest: #e5e5e5;
-    --neutral-fill-input-hover: white;
-    --neutral-fill-stealth-rest: #e5e5e5;
-
-    --neutral-fill-rest: #5d5d5d;
-
-    --neutral-fill-input-active: #e5e5e5;
   }
 
 }

@@ -1,9 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { property, customElement } from 'lit/decorators';
 
-// For more info on the @pwabuilder/pwainstall component click here https://github.com/pwa-builder/pwa-install
-import '@pwabuilder/pwainstall';
-
 @customElement('app-home')
 export class AppHome extends LitElement {
   // For more information on using properties and state in lit
@@ -19,7 +16,7 @@ export class AppHome extends LitElement {
         flex-direction: column;
       }
 
-      #welcomeBar fast-card {
+      #welcomeBar .card {
         margin-bottom: 12px;
       }
 
@@ -27,12 +24,6 @@ export class AppHome extends LitElement {
       #infoCard {
         padding: 18px;
         padding-top: 0px;
-      }
-
-      pwa-install {
-        position: absolute;
-        bottom: 16px;
-        right: 16px;
       }
 
       button {
@@ -59,7 +50,7 @@ export class AppHome extends LitElement {
       }
 
       @media(prefers-color-scheme: light) {
-        fast-card {
+        .card {
           --background-color: white;
         }
       }
@@ -90,78 +81,63 @@ export class AppHome extends LitElement {
     return html`
       <div>
         <div id="welcomeBar">
-          <fast-card id="welcomeCard">
+          <div class="card" id="welcomeCard">
             <h2>${this.message}</h2>
 
             <p>
               For more information on the PWABuilder pwa-starter, check out the
-              <fast-anchor
+              <a
                 href="https://github.com/pwa-builder/pwa-starter/blob/master/README.md"
-                appearance="hypertext"
-                >README</fast-anchor
-              >.
+                >README</a>.
             </p>
 
             <p>
               Welcome to the
-              <fast-anchor href="https://pwabuilder.com" appearance="hypertext"
-                >PWABuilder</fast-anchor
-              >
+              <a href="https://pwabuilder.com"
+                >PWABuilder</a>
               pwa-starter! Be sure to head back to
-              <fast-anchor href="https://pwabuilder.com" appearance="hypertext"
-                >PWABuilder</fast-anchor
-              >
+              <a href="https://pwabuilder.com"
+                >PWABuilder</a>
               when you are ready to ship this PWA to the Microsoft, Google Play
               and Samsung Galaxy stores!
             </p>
 
             ${'share' in navigator
-              ? html`<fast-button appearance="primary" @click="${this.share}"
-                  >Share this Starter!</fast-button
-                >`
+              ? html`<button @click="${this.share}"
+                  >Share this Starter!</button>`
               : null}
-          </fast-card>
+          </div>
 
-          <fast-card id="infoCard">
+          <div class="card" id="infoCard">
             <h2>Technology Used</h2>
 
             <ul>
               <li>
-                <fast-anchor
+                <a
                   href="https://www.typescriptlang.org/"
-                  appearance="hypertext"
-                  >TypeScript</fast-anchor
-                >
+                  >TypeScript</a>
               </li>
 
               <li>
-                <fast-anchor
+                <a
                   href="https://lit.dev"
-                  appearance="hypertext"
-                  >lit</fast-anchor
-                >
+                  >lit</a>
               </li>
 
               <li>
-                <fast-anchor
+                <a
                   href="https://www.fast.design/docs/components/getting-started"
-                  appearance="hypertext"
-                  >FAST Components</fast-anchor
-                >
+                  >FAST Components</a>
               </li>
 
               <li>
-                <fast-anchor
+                <a
                   href="https://vaadin.github.io/vaadin-router/vaadin-router/demo/#vaadin-router-getting-started-demos"
-                  appearance="hypertext"
-                  >Vaadin Router</fast-anchor
-                >
+                  >Vaadin Router</a>
               </li>
             </ul>
-          </fast-card>
+          </div>
         </div>
-
-        <pwa-install>Install PWA Starter</pwa-install>
       </div>
     `;
   }

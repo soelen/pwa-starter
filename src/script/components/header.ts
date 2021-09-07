@@ -31,7 +31,7 @@ export class AppHeader extends LitElement {
         justify-content: space-between;
       }
 
-      nav fast-anchor {
+      nav a {
         margin-left: 10px;
       }
 
@@ -53,8 +53,8 @@ export class AppHeader extends LitElement {
         <h1>${this.title}</h1>
 
         <nav>
-          <fast-anchor href="./" appearance="button">Home</fast-anchor>
-          <fast-anchor href="./about" appearance="button">About</fast-anchor>
+          <a href="./">Home</a>
+          <a href="./about">About</a>
         </nav>
       </header>
     `;
