@@ -48,7 +48,7 @@
       }
     ]
   },
-  "include": ["pwabuilder-sw.ts"],
+  "include": ["pwabuilder-sw.ts", "src/**/*.ts" ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts",
