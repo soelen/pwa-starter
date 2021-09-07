@@ -1,14 +1,20 @@
 import { LitElement, css, html } from 'lit';
-import { customElement } from 'lit/decorators';
+import { customElement, property } from 'lit/decorators';
 
 import './app-home';
 
+import { connect } from 'pwa-helpers';
 import { Router } from '@vaadin/router';
 
 import '../components/header';
+import store, { RootState } from '../../store/store';
+import { closeDrawer, openDrawer } from '../../store/drawer';
 
 @customElement('app-index')
-export class AppIndex extends LitElement {
+export class AppIndex extends  connect( store )( LitElement )   {
+
+  @property( { type: Boolean, } ) drawer: boolean = false;
+
   static get styles() {
     return css`
       main {
@@ -76,12 +82,29 @@ export class AppIndex extends LitElement {
         ],
       } as any,
     ]);
+
+    store.subscribe( () => this.stateChanged( store.getState() ) );
+  }
+
+  public stateChanged ( state:RootState ): void {
+    this.drawer = state.ui.drawer.open;
+
   }
 
   render() {
     return html`
       <div>
-        <app-header></app-header>
+        <app-header
+          @open="${ () => store.dispatch( openDrawer() ) }"
+        ></app-header>
+        <sl-drawer
+          ?open="${ this.drawer }"
+          @sl-hide="${ () => store.dispatch( closeDrawer() ) }"
+        >
+          <a href="./">Home</a>
+          <a href="./about">About</a>
+
+        </sl-drawer>
 
         <main>
           <div id="routerOutlet"></div>

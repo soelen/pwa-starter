@@ -3,9 +3,6 @@ import { property, customElement } from 'lit/decorators';
 import { RootState } from '../../store/store';
 import { PageElement } from './page-element';
 
-import { openDrawer, closeDrawer } from '../../store/drawer';
-import store from '../../store/store';
-
 @customElement('app-home')
 export class AppHome extends PageElement {
   // For more information on using properties and state in lit
@@ -66,9 +63,7 @@ export class AppHome extends PageElement {
   @property( { type: Boolean, } ) drawer: boolean = false;
 
   stateChanged( state:RootState ) {
-
-    this.drawer = state.ui.drawer.open;
-
+    state;
   }
 
   constructor() {
@@ -121,16 +116,6 @@ export class AppHome extends PageElement {
                   >Share this Starter!</sl-button>`
               : null}
 
-            <sl-button
-              @click="${ () => store.dispatch( openDrawer() ) }"
-            >Open Drawer</sl-button>
-            <sl-drawer
-              ?open="${ this.drawer }"
-              @sl-hide="${ () => store.dispatch( closeDrawer() ) }"
-            >
-            hello!
-
-            </sl-drawer>
           </div>
 
           <div class="card" id="infoCard">
